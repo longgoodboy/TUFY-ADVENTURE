@@ -33,6 +33,8 @@
 		</Compiler>
 		<Unit filename="BaseObject.cpp" />
 		<Unit filename="BaseObject.h" />
+		<Unit filename="ImpTimer.cpp" />
+		<Unit filename="ImpTimer.h" />
 		<Unit filename="MainObject.cpp" />
 		<Unit filename="MainObject.h" />
 		<Unit filename="Untitled2.cpp" />
@@ -40,6 +42,8 @@
 		<Unit filename="commonfunc.h" />
 		<Unit filename="game_map.cpp" />
 		<Unit filename="game_map.h" />
+		<Unit filename="time.cpp" />
+		<Unit filename="time.h" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
 		</Extensions>

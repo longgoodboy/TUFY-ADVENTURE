@@ -10,7 +10,7 @@
 #define GRAVITY_SPEED 0.8
 #define MAX_FALL_SPEED 10
 
-#define PLAYER_SPEED 1
+#define PLAYER_SPEED 10
 #define PLAYER_HIGHT_VAL 18;
 
 

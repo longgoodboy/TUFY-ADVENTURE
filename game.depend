@@ -1,9 +1,10 @@
 # depslib dependency file v1.0
-1679276370 source:d:\code\game\untitled2.cpp
+1679338003 source:d:\code\game\untitled2.cpp
 	"commonfunc.h"
 	"BaseObject.h"
 	"game_map.h"
 	"MainObject.h"
+	"ImpTimer.h"
 
 1678988194 source:d:\code\game\baseobject.cpp
 	"BaseObject.h"
@@ -11,7 +12,7 @@
 1678993530 d:\code\game\baseobject.h
 	"CommonFunc.h"
 
-1679044686 d:\code\game\commonfunc.h
+1679333264 d:\code\game\commonfunc.h
 	<windows.h>
 	<string>
 	<SDL.h>
@@ -29,12 +30,20 @@
 	"CommonFunc.h"
 	"BaseObject.h"
 
-1679276059 source:d:\code\game\mainobject.cpp
+1679338463 source:d:\code\game\mainobject.cpp
 	"MainObject.h"
 	"commonfunc.h"
 
-1679273492 d:\code\game\mainobject.h
+1679338003 d:\code\game\mainobject.h
 	"CommonFunc.h"
 	"BaseObject.h"
 	<vector>
+
+1679318567 source:d:\code\game\time.cpp
+
+1679333203 d:\code\game\imptimer.h
+
+1679333470 source:d:\code\game\imptimer.cpp
+	"ImpTimer.h"
+	"CommonFunc.h"
 

@@ -149,6 +149,14 @@ void MainObject::HandleInputAction(SDL_Event events, SDL_Renderer* screen)
         status_  = WALK_RIGHT;
         input_type_.right_ = 1;
         input_type_.left_ = 0;
+        if (on_ground_ == true)
+        {
+            LoadImg("img//player_right.png", screen);
+        }
+        else
+        {
+            LoadImg("img//jum_right.png", screen);
+        }
         break;
       }
     case SDLK_LEFT:
@@ -156,13 +164,26 @@ void MainObject::HandleInputAction(SDL_Event events, SDL_Renderer* screen)
         status_ = WALK_LEFT;
         input_type_.left_ = 1;
         input_type_.right_ = 0;
+        if (on_ground_ == true)
+        {
+            LoadImg("img//player_left.png", screen);
+        }
+        else
+        {
+            LoadImg("img//jum_left.png", screen);
+        }
         break;
       }
+    case SDLK_UP:
+        {
+            input_type_.jump_ = 1;
+        }
     }
   }
   //If a key was released
   else if( events.type == SDL_KEYUP )
   {
+
     ////Set the velocity
     switch( events.key.keysym.sym )
     {
@@ -178,9 +199,19 @@ void MainObject::HandleInputAction(SDL_Event events, SDL_Renderer* screen)
 
         break;
       }
+    case SDLK_UP:
+      {
+        input_type_.jump_ = 0;
+
+        break;
+      }
     }
 
   }
+  else if (events.button.button == SDL_BUTTON_RIGHT)
+    {
+        input_type_.jump_ = 1;
+    }
 
 }
 
@@ -203,6 +234,17 @@ void MainObject::DoPlayer(Map& g_map)
     {
       x_val_+= PLAYER_SPEED;
     }
+
+    if (input_type_.jump_ == 1)
+    {
+      if (on_ground_ == true)
+      {
+        y_val_ = -PLAYER_HIGHT_VAL;
+      }
+      on_ground_ = false;
+      input_type_.jump_ = 0;
+    }
+
     CheckToMap(g_map);
     CenterEntityOnMap(g_map);
 
