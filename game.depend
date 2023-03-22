@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1679338003 source:d:\code\game\untitled2.cpp
+1679467530 source:d:\code\game\untitled2.cpp
 	"commonfunc.h"
 	"BaseObject.h"
 	"game_map.h"
@@ -30,11 +30,11 @@
 	"CommonFunc.h"
 	"BaseObject.h"
 
-1679338463 source:d:\code\game\mainobject.cpp
+1679467794 source:d:\code\game\mainobject.cpp
 	"MainObject.h"
 	"commonfunc.h"
 
-1679338003 d:\code\game\mainobject.h
+1679468395 d:\code\game\mainobject.h
 	"CommonFunc.h"
 	"BaseObject.h"
 	<vector>

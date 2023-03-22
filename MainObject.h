@@ -47,7 +47,7 @@ private:
   int frame_;
   int status_;
 
-  SDL_Rect frame_clip_[8];
+  SDL_Rect frame_clip_[6];
   Input input_type_;
   bool on_ground_;
 

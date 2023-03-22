@@ -3,7 +3,7 @@
 //const int PLAYER_WIDTH = 60;
 //const int PLAYER_HEIGHT = 64;
 
-#define  NUM_FRAME 8
+#define  NUM_FRAME 6
 
 
 
@@ -41,7 +41,7 @@ bool MainObject::LoadImg(std::string path, SDL_Renderer* screen)
 
   if (ret == true)
   {
-    width_frame_ = rect_.w/NUM_FRAME;
+    width_frame_ = rect_.w/6;
     height_frame_ = rect_.h;
   }
 
@@ -84,15 +84,7 @@ void MainObject::set_clips()
     frame_clip_[ 5 ].w = width_frame_;
     frame_clip_[ 5 ].h = height_frame_;
 
-    frame_clip_[ 6 ].x = width_frame_ * 6;
-    frame_clip_[ 6 ].y = 0;
-    frame_clip_[ 6 ].w = width_frame_;
-    frame_clip_[ 6 ].h = height_frame_;
 
-    frame_clip_[ 7 ].x = width_frame_ * 7;
-    frame_clip_[ 7 ].y = 0;
-    frame_clip_[ 7 ].w = width_frame_;
-    frame_clip_[ 7 ].h = height_frame_;
   }
 }
 
@@ -101,11 +93,11 @@ void MainObject::Show(SDL_Renderer* des)
 
   if (status_ == WALK_LEFT)
   {
-      LoadImg("img//player_left.png", des);
+      LoadImg("img//Walk_left.png", des);
   }
   else
   {
-      LoadImg("img//player_right.png", des);
+      LoadImg("img//Walk_right.png", des);
   }
 
   if((input_type_.left_ == 1 ||
@@ -118,7 +110,7 @@ void MainObject::Show(SDL_Renderer* des)
     frame_ = 0;
   }
 
-  if( frame_ >= 8 )
+  if( frame_ >= 6 )
   {
     frame_ = 0;
   }
@@ -151,11 +143,11 @@ void MainObject::HandleInputAction(SDL_Event events, SDL_Renderer* screen)
         input_type_.left_ = 0;
         if (on_ground_ == true)
         {
-            LoadImg("img//player_right.png", screen);
+            LoadImg("img//walk_right.png", screen);
         }
         else
         {
-            LoadImg("img//jum_right.png", screen);
+            LoadImg("img//walk_right.png", screen);
         }
         break;
       }
@@ -166,11 +158,11 @@ void MainObject::HandleInputAction(SDL_Event events, SDL_Renderer* screen)
         input_type_.right_ = 0;
         if (on_ground_ == true)
         {
-            LoadImg("img//player_left.png", screen);
+            LoadImg("img//walk_left.png", screen);
         }
         else
         {
-            LoadImg("img//jum_left.png", screen);
+            LoadImg("img//walk_left.png", screen);
         }
         break;
       }
