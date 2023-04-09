@@ -12,7 +12,7 @@ TuFy Adventure is a fun and challenging game that tests players' reflexes and ti
   - left key to move left
   - right key to move right
   - up key to jump
-The game ends when the dog hits a enemy or falling to the abyss
+- The game ends when the dog hits a enemy or falling to the abyss
 Tips:
 - practice make perfect.
 ## License
