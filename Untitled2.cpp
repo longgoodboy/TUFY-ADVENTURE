@@ -175,7 +175,20 @@ int main(int argc, char* argv[])
                 p_threat->DoPlayer(map_data);
                 p_threat->Show(g_screen);
 
+                SDL_Rect rect_player = p_player.GetRectFrame();
 
+                SDL_Rect rect_threat = p_threat->GetRectFrame();
+                bool bCol = SDLCommonFunc::CheckCollision(rect_player, rect_threat);
+                if (bCol)
+                {
+                    if(MessageBox(NULL, "GAME OVER", "Info", MB_OK | MB_ICONSTOP) == IDOK)
+                   {
+                       p_threat->Free();
+                       close();
+                       SDL_Quit();
+                       return 0;
+                   }
+                }
             }
         }
 

@@ -220,8 +220,7 @@ void MainObject::HandleInputAction(SDL_Event events, SDL_Renderer* screen)
 
 void MainObject::DoPlayer(Map& g_map)
 {
-    if (come_back == 0)
-    {
+
         x_val_ = 0;
         y_val_ += 0.8;
 
@@ -252,18 +251,7 @@ void MainObject::DoPlayer(Map& g_map)
 
         CheckToMap(g_map);
         CenterEntityOnMap(g_map);
-    }
-    if (come_back > 0)
-    {
-        come_back--;
-        if (come_back == 0)
-        {
-            y_pos_ = 0;
-            x_pos_ = 0;
-            x_val_ = 0;
-            y_val_ = 0;
-        }
-    }
+
 
 
 }
@@ -373,9 +361,12 @@ void MainObject::CheckToMap(Map& g_map)
     {
         x_pos_ = g_map.max_x_ - width_frame_ - 1;
     }
-    if (y_pos_ > g_map.max_y_){
-        come_back = 10;
+    if (y_pos_ > g_map.max_y_)
+    {
+        if(MessageBox(NULL, "GAME OVER", "Info", MB_OK | MB_ICONSTOP) == IDOK)
+                   {
+                       SDL_Quit();
+                   }
+
     }
-
 }
-
