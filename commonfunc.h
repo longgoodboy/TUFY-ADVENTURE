@@ -3,16 +3,17 @@
 
 #include <windows.h>
 #include <string>
+#include <vector>
 #include <SDL.h>
 #include <SDL_image.h>
 #include <SDL_mixer.h>
 #include <SDL_ttf.h>
 
-static SDL_Window* g_window = NULL;
+static SDL_Window* g_window = NULL; //tạo window cho game
 static SDL_Renderer* g_screen = NULL;
-static SDL_Event g_event;
+static SDL_Event g_event; //nhận sự kiện từ bàn phím, chuôt,...
 
-//m�n h�nh
+//màn hình
 const int FRAMES_PER_SECOND = 25;
 const int SCREEN_WIDTH = 1280;
 const int SCREEN_HEIGHT = 640;
@@ -48,5 +49,7 @@ typedef struct Map
     int tile[MAX_MAP_Y][MAX_MAP_X];
     char* file_name_;
 } Map;
+
+
 
 #endif

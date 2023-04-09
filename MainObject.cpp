@@ -88,6 +88,17 @@ void MainObject::set_clips()
   }
 }
 
+SDL_Rect MainObject::GetRectFrame()
+{
+    SDL_Rect rect;
+    rect.x = rect_.x;
+    rect.y = rect_.y;
+    rect.w = width_frame_;
+    rect.h = height_frame_;
+
+    return rect;
+}
+
 void MainObject::Show(SDL_Renderer* des)
 {
 
@@ -209,36 +220,50 @@ void MainObject::HandleInputAction(SDL_Event events, SDL_Renderer* screen)
 
 void MainObject::DoPlayer(Map& g_map)
 {
-    x_val_ = 0;
-    y_val_ += 0.8;
-
-    if (y_val_ >= MAX_FALL_SPEED)
+    if (come_back == 0)
     {
-      y_val_ = MAX_FALL_SPEED;
-    }
+        x_val_ = 0;
+        y_val_ += 0.8;
 
-    if (input_type_.left_ == 1)
+        if (y_val_ >= MAX_FALL_SPEED)
+        {
+            y_val_ = MAX_FALL_SPEED;
+        }
+
+        if (input_type_.left_ == 1)
+        {
+            x_val_ -= PLAYER_SPEED;
+        }
+
+        else if (input_type_.right_ == 1)
+        {
+            x_val_+= PLAYER_SPEED;
+        }
+
+        if (input_type_.jump_ == 1)
+        {
+            if (on_ground_ == true)
+            {
+                y_val_ = -PLAYER_HIGHT_VAL;
+            }
+            on_ground_ = false;
+            input_type_.jump_ = 0;
+        }
+
+        CheckToMap(g_map);
+        CenterEntityOnMap(g_map);
+    }
+    if (come_back > 0)
     {
-      x_val_ -= PLAYER_SPEED;
+        come_back--;
+        if (come_back == 0)
+        {
+            y_pos_ = 0;
+            x_pos_ = 0;
+            x_val_ = 0;
+            y_val_ = 0;
+        }
     }
-
-    else if (input_type_.right_ == 1)
-    {
-      x_val_+= PLAYER_SPEED;
-    }
-
-    if (input_type_.jump_ == 1)
-    {
-      if (on_ground_ == true)
-      {
-        y_val_ = -PLAYER_HIGHT_VAL;
-      }
-      on_ground_ = false;
-      input_type_.jump_ = 0;
-    }
-
-    CheckToMap(g_map);
-    CenterEntityOnMap(g_map);
 
 
 }
@@ -348,4 +373,9 @@ void MainObject::CheckToMap(Map& g_map)
     {
         x_pos_ = g_map.max_x_ - width_frame_ - 1;
     }
+    if (y_pos_ > g_map.max_y_){
+        come_back = 10;
+    }
+
 }
+

@@ -1,10 +1,11 @@
 # depslib dependency file v1.0
-1679467530 source:d:\code\game\untitled2.cpp
+1680987337 source:d:\code\game\untitled2.cpp
 	"commonfunc.h"
 	"BaseObject.h"
 	"game_map.h"
 	"MainObject.h"
 	"ImpTimer.h"
+	"ThreatsObject.h"
 
 1678988194 source:d:\code\game\baseobject.cpp
 	"BaseObject.h"
@@ -12,29 +13,30 @@
 1678993530 d:\code\game\baseobject.h
 	"CommonFunc.h"
 
-1679333264 d:\code\game\commonfunc.h
+1680985865 d:\code\game\commonfunc.h
 	<windows.h>
 	<string>
+	<vector>
 	<SDL.h>
 	<SDL_image.h>
 	<SDL_mixer.h>
 	<SDL_ttf.h>
 
-1678946259 source:d:\code\game\commonfunc.cpp
+1680985865 source:d:\code\game\commonfunc.cpp
 	"commonfunc.h"
 
 1678999228 source:d:\code\game\game_map.cpp
 	"game_map.h"
 
-1679043219 d:\code\game\game_map.h
+1680867514 d:\code\game\game_map.h
 	"CommonFunc.h"
 	"BaseObject.h"
 
-1679467794 source:d:\code\game\mainobject.cpp
+1680983562 source:d:\code\game\mainobject.cpp
 	"MainObject.h"
 	"commonfunc.h"
 
-1679468395 d:\code\game\mainobject.h
+1680983890 d:\code\game\mainobject.h
 	"CommonFunc.h"
 	"BaseObject.h"
 	<vector>
@@ -46,4 +48,18 @@
 1679333470 source:d:\code\game\imptimer.cpp
 	"ImpTimer.h"
 	"CommonFunc.h"
+
+1680940062 source:d:\code\game\threats.cpp
+	"Threats.h"
+
+1680923951 d:\code\game\threats.h
+	"commonfunc.h"
+	"BaseObject.h"
+
+1680987545 source:d:\code\game\threatsobject.cpp
+	"ThreatsObject.h"
+
+1680987663 d:\code\game\threatsobject.h
+	"CommonFunc.h"
+	"BaseObject.h"
 

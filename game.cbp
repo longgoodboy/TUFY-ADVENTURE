@@ -37,6 +37,10 @@
 		<Unit filename="ImpTimer.h" />
 		<Unit filename="MainObject.cpp" />
 		<Unit filename="MainObject.h" />
+		<Unit filename="Threats.cpp" />
+		<Unit filename="Threats.h" />
+		<Unit filename="ThreatsObject.cpp" />
+		<Unit filename="ThreatsObject.h" />
 		<Unit filename="Untitled2.cpp" />
 		<Unit filename="commonfunc.cpp" />
 		<Unit filename="commonfunc.h" />

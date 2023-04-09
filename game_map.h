@@ -26,6 +26,7 @@ public:
   void LoadMapTiles(SDL_Renderer* screen);
   Map GetMap() const {return game_map_;};
   void SetMap(const Map& gMap) {game_map_ = gMap;}
+
 private:
   Map game_map_;
   TileMat tile_mat_[MAX_TILES];

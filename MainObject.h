@@ -37,8 +37,10 @@ public:
   void CheckToMap(Map& g_map);
   void SetMapXY(const int map_x, const int map_y) {map_x_ = map_x; map_y_ = map_y;}
   void CenterEntityOnMap(Map& g_map);
+  int get_x_pos() {return x_pos_;}
+  int get_y_pos() {return y_pos_;}
 
-
+  SDL_Rect GetRectFrame();
 private:
 
 
@@ -63,6 +65,7 @@ private:
 
   int width_frame_;
   int height_frame_;
+  int come_back = 0;
 };
 
 
