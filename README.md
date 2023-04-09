@@ -1,5 +1,5 @@
 # TUFY ADVENTURE
-Dodgy Dog is a game developed by kieu Long in 2023. The game using C++ and SDL2 is used for the exam. The game is inspired by Mario
+TuFy Adventure is a game developed by kieu Long in 2023. The game using C++ and SDL2 is used for the exam. The game is inspired by Mario
 ## Game Description
 in this game, you will be a dog, whose name is TuFy, and you are stucking in a imaginary world with many monsters. Your mission is to survive in this world. (The game is in progress).
 ![game](https://user-images.githubusercontent.com/125455247/230778047-1afdc1b5-5f84-49a1-9878-1a841f95a8e7.PNG)
