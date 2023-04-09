@@ -34,8 +34,7 @@ public:
   void set_ypos(const int& yps) {y_pos_ = yps;}
   int get_x_pos() {return x_pos_;}
   int get_y_pos() {return y_pos_;}
-  bool get_is_alive() {return is_alive_;}
-  void set_is_alive(bool is_alive) {is_alive_ = is_alive;}
+
 
 
   void Reset(const int x_boder, const int y_border);
@@ -70,8 +69,6 @@ private:
   int map_y_;
   float x_val_;
   float y_val_;
-  bool is_alive_;
-  bool is_stop_bullet_;
   float x_pos_;
   float y_pos_;
   int on_ground_;

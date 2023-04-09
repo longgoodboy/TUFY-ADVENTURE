@@ -13,7 +13,6 @@ ThreatsObject::ThreatsObject()
   x_val_ = 0;
   y_val_ = 0;
   //is_alive_ = false;
-  is_stop_bullet_ = false;
 
   x_pos_ = 0;
   y_pos_ = 0;

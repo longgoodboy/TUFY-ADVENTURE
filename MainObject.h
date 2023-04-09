@@ -7,7 +7,7 @@
 
 #include <vector>
 
-#define GRAVITY_SPEED 0.8
+#define GRAVITY_SPEED 1.5
 #define MAX_FALL_SPEED 10
 
 #define PLAYER_SPEED 10
