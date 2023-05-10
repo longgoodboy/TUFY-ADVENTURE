@@ -15,7 +15,7 @@ MainObject::MainObject()
   y_pos_ = 0;
   x_val_ = 0;
   y_val_ = 0;
-
+  inc_sp = 0;
   width_frame_ = 0;
   height_frame_ = 0;
   status_ = -1;
@@ -27,6 +27,7 @@ MainObject::MainObject()
   on_ground_ = false;
   map_x_ = 0;
   map_y_ = 0;
+  out_of_time = 0;
 }
 
 MainObject::~MainObject()
@@ -220,7 +221,8 @@ void MainObject::HandleInputAction(SDL_Event events, SDL_Renderer* screen)
 
 void MainObject::DoPlayer(Map& g_map)
 {
-
+    if (inc_sp == 0)
+    {
         x_val_ = 0;
         y_val_ += 0.8;
 
@@ -248,6 +250,42 @@ void MainObject::DoPlayer(Map& g_map)
             on_ground_ = false;
             input_type_.jump_ = 0;
         }
+    }
+    else if (inc_sp == 1)
+    {
+        x_val_ = 0;
+        y_val_ += 0.8;
+
+        if (y_val_ >= MAX_FALL_SPEED)
+        {
+            y_val_ = MAX_FALL_SPEED;
+        }
+
+        if (input_type_.left_ == 1)
+        {
+            x_val_ -= 18;
+            out_of_time -= 1;
+        }
+
+        else if (input_type_.right_ == 1)
+        {
+            x_val_+= 18;
+            out_of_time -= 1;
+        }
+
+        if (input_type_.jump_ == 1)
+        {
+            if (on_ground_ == true)
+            {
+                y_val_ = -22;
+            }
+
+            on_ground_ = false;
+            input_type_.jump_ = 0;
+            out_of_time -= 1;
+        }
+        if (out_of_time == 0) inc_sp = 0;
+    }
 
         CheckToMap(g_map);
         CenterEntityOnMap(g_map);
@@ -294,15 +332,27 @@ void MainObject::CheckToMap(Map& g_map)
     int height_min = height_frame_ < TILE_SIZE ? height_frame_ : TILE_SIZE;
 
     x1 = (x_pos_ + x_val_)/TILE_SIZE;
-    x2 = (x_pos_ + x_val_ + width_frame_ - 1)/TILE_SIZE;
+    x2 = (x_pos_ + x_val_ + width_frame_ )/TILE_SIZE;
 
     y1 = (y_pos_)/TILE_SIZE;
     y2 = (y_pos_ + height_min - 1)/TILE_SIZE;
 
     if (x1 >= 0 && x2 < MAX_MAP_X && y1 >= 0 && y2 < MAX_MAP_Y)
     {
+
         if (x_val_ > 0)
         {
+            int val1 = g_map.tile[y1][x2];
+            int val2 = g_map.tile[y2][x2];
+            if (val1 == 4 || val2 == 4)
+            {
+                g_map.tile[y1][x2] = 0;
+                g_map.tile[y2][x2] = 0;
+                inc_sp = 1;
+                out_of_time = 100;
+            }
+
+
             if (g_map.tile[y1][x2] != BLANK_TILE || g_map.tile[y2][x2] != BLANK_TILE)
             {
                 x_pos_ = x2*TILE_SIZE;
@@ -312,6 +362,16 @@ void MainObject::CheckToMap(Map& g_map)
         }
         else if (x_val_ < 0)
         {
+            int val1 = g_map.tile[y1][x1];
+            int val2 = g_map.tile[y2][x1];
+            if (val1 == 4 || val2 == 4)
+            {
+                g_map.tile[y1][x1] = 0;
+                g_map.tile[y2][x1] = 0;
+                inc_sp = 1;
+                out_of_time = 100;
+            }
+
             if (g_map.tile[y1][x1] != BLANK_TILE || g_map.tile[y2][x1] != BLANK_TILE)
             {
                 x_pos_ = (x1 + 1)*TILE_SIZE;
@@ -326,12 +386,21 @@ void MainObject::CheckToMap(Map& g_map)
     x2 = (x_pos_ + width_min)/TILE_SIZE;
 
     y1 = (y_pos_ + y_val_)/TILE_SIZE;
-    y2 = (y_pos_ + y_val_ + height_frame_ + 1)/TILE_SIZE;
+    y2 = (y_pos_ + y_val_ + height_frame_)/TILE_SIZE;
 
     if (x1 >= 0 && x2 < MAX_MAP_X && y1 >= 0 && y2 < MAX_MAP_Y)
     {
         if (y_val_ > 0)
         {
+            int val1 = g_map.tile[y2][x1];
+            int val2 = g_map.tile[y2][x2];
+            if (val1 == 4 || val2 == 4)
+            {
+                g_map.tile[y2][x1] = 0;
+                g_map.tile[y2][x2] = 0;
+                inc_sp = 1;
+                out_of_time = 100;
+            }
             if (g_map.tile[y2][x1] != BLANK_TILE || g_map.tile[y2][x2] != BLANK_TILE)
             {
                 y_pos_ = y2*TILE_SIZE;
@@ -342,6 +411,15 @@ void MainObject::CheckToMap(Map& g_map)
         }
         else if (y_val_ < 0)
         {
+            int val1 = g_map.tile[y1][x1];
+            int val2 = g_map.tile[y1][x2];
+            if (val1 == 4 || val2 == 4)
+            {
+                g_map.tile[y1][x1] = 0;
+                g_map.tile[y1][x2] = 0;
+                inc_sp = 1;
+                out_of_time = 100;
+            }
             if (g_map.tile[y1][x1] != BLANK_TILE || g_map.tile[y1][x2] != BLANK_TILE)
             {
                 y_pos_ = (y1 + 1)*TILE_SIZE;

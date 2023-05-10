@@ -55,6 +55,8 @@ private:
 
   int map_x_;
   int map_y_;
+  int inc_sp;
+  int out_of_time;
 
 
 
